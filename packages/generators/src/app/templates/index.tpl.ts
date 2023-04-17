@@ -8,8 +8,8 @@ import { logger } from './logger'
 const port = app.get('port')
 const host = app.get('host')
 
-process.on('unhandledRejection', (reason) =>
-  logger.error('Unhandled Rejection %O', reason)
+process.on('unhandledRejection', (reason: Error) =>
+  logger.error('Unhandled Rejection %O', reason.stack || reason)
 )
 
 app.listen(port).then(() => {
